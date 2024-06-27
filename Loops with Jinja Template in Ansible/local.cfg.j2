@@ -1,0 +1,10 @@
+frontend loadbalancer
+                    bind *:8080
+                    timeout client 10s
+                    default_backend webservers
+backend webservers
+                    balance roundrobin
+                    timeout connect 10s
+                    timeout server 10s
+                    server app1 65.2.33.249:80 #IP of weserver1
+                    server app2 13.127.12.193:80 #IP of webserver2
