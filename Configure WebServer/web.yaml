@@ -1,0 +1,16 @@
+#Configure WebServer
+- host: all
+  tasks:
+    - name: "Installing httpd in target node"      
+      package:
+        name: "httpd"
+        state: present
+    - name: "copy the webpage to target node"
+      copy:
+        src: "index.html"
+        dest: "/var/www/html"
+    - name: "Start the httpd webserver"
+      service:
+        name: "httpd"
+        state: started
+        enabled: true
