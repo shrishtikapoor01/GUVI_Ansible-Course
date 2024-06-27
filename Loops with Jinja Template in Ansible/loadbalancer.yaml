@@ -1,0 +1,15 @@
+- hosts: loadbalancer
+  tasks:
+  - name: "Install load balancer" 
+    package: 
+      name: "haproxy"
+      state: present
+  - name: "mapping webserver to the load balancer"
+    template:
+      src: "local.cfg.j2"
+      dest: "/etc/haproxy/haproxy.cfg"
+  - name: "start the service"
+    service:
+      name: "haproxy"
+      state: started
+  
