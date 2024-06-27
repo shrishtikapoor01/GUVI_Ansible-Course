@@ -1,0 +1,9 @@
+- hosts: all
+  vars:
+  - x: true
+  tasks:
+  - name: "install php in target machine"
+    package: 
+      name: "php"
+      state: present
+    when: (((ansible_os_family=="RedHat") or (ansible_os_family=="ubuntu")) and (ansible_memfree_mb>=100)) and x
