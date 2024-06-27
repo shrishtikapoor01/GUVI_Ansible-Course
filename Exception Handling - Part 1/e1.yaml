@@ -1,0 +1,9 @@
+- hosts: all
+  tasks:
+  - package:
+     name: "php2"
+     state: present
+    ignore_errors: true
+    register: x
+  - debug:
+      var: x
